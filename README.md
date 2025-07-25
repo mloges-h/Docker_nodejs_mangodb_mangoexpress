@@ -71,6 +71,7 @@ http://<your-server-ip>:8081
   "data": "MongoDB connected successfully Logesh!"
 }
 ```
+## Visit your Node.js app http://<your-server-ip>:3000
 
 ## With Docker Compose (Recommended)
 
