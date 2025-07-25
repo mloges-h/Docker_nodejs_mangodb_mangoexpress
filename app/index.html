@@ -22,7 +22,7 @@
 <script>
     (async function init() {
         const cont = document.getElementById('container');
-        const response = await fetch('http://localhost:3000/fetch-data', {
+        const response = await fetch('http://13.201.74.210:3000/fetch-data', {
             method: "GET",
             headers: {
               'Accept': 'application/json',
@@ -36,7 +36,7 @@
 <body>
     <div class='container' id='container'>
         <h1>Welcome to this Super Sophisticated App</h1>
-        <span>Some static data:  </span><h3 id="static">this is hard-coded in index.html</h3>
+        <span>Some static data:  </span><h3 id="static">Hii logesh App working with database</h3>
         <hr />
         <span>Data from MongoDB:  </span><h3 id="dynamic"></h3>
         <hr />
