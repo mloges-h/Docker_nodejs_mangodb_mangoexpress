@@ -49,7 +49,7 @@ docker run -itd -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONF
 
 ```bash
 git clone https://github.com/mloges-h/Docker_nodejs_mangodb_mangoexpress.git
-cd docker-compose-crash-course
+cd Docker_nodejs_mangodb_mangoexpress
 ```
 
 ### Step 2: Start All Services
