@@ -59,7 +59,7 @@ docker run -itd -p 3000:3000 -e MONGO_DB_USERNAME=admin -e MONGO_DB_PWD=supersec
 http://<your-server-ip>:8081
 ```
 
-> Example: `http://localhost:8081`
+> Example: `http://<your-server-ip>:8081`
 
 1. Create a database called: **my-db**
 2. Inside that, create a collection: **my-collection**
