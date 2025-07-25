@@ -60,12 +60,13 @@ Create DB: my-db
 
 Create collection: my-collection
 
-Add document:
+New Documents:
 
 {
   "myid": 1,
   "data": "some dynamic data loaded from db"
 }
+
 
 ## Visit your Node.js app: http://<your-ip>:3000
 ---
