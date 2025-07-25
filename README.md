@@ -115,7 +115,8 @@ http://<your-server-ip>:3000
 | Endpoint      | Method | Description                              |
 | ------------- | ------ | ---------------------------------------- |
 | `/`           | GET    | Loads HTML UI                            |
-| `/fetch-data` | GET    | Fetches data from MongoDB (by `myid: 1`) |
+| `/fetch-data` | GET    | Fetches data from MongoDB (by `myid: 1`)
+                          which is in server.js |
 
 ---
 
