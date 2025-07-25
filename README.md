@@ -2,7 +2,7 @@
 
 A beginner-friendly project to demonstrate running a Node.js app with MongoDB and Mongo Express using **Docker** and **Docker Compose**. Once 
 
-> **After cloning the repository from GitHub, make sure to update the `/app/index.html` file. Replace any `localhost` URLs with your actual server IP address.**
+> **After cloning the repository from GitHub, make sure to update the `/app/index.html` file. Replace `localhost` URLs with your actual server IP address.**
 
 ---
 
