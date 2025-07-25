@@ -74,6 +74,8 @@ http://<your-server-ip>:8081
 
 ## With Docker Compose (Recommended)
 
+Visit your Node.js app http://<your-server-ip>:3000
+
 ### Step 1: Clone the Repository
 
 ```bash
