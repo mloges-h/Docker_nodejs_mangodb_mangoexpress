@@ -3,6 +3,7 @@
 A beginner-friendly project to demonstrate running a Node.js app with MongoDB and Mongo Express using **Docker** and **Docker Compose**. Once 
 
 > **After cloning the repository from GitHub, make sure to update the `/app/index.html` file. Replace `localhost` URLs with your actual server IP address.**
+<img width="650" height="542" alt="image" src="https://github.com/user-attachments/assets/6d08db95-9d07-43fa-92a7-10c961cf4d8f" />
 
 ---
 
@@ -60,7 +61,6 @@ docker run -itd -p 3000:3000 -e MONGO_DB_USERNAME=admin -e MONGO_DB_PWD=supersec
 ```text
 http://<your-server-ip>:8081
 ```
-
 > Example: `http://<your-server-ip>:8081`
 
 1. Create a database called: **my-db**
@@ -73,10 +73,16 @@ http://<your-server-ip>:8081
   "data": "MongoDB connected successfully Logesh!"
 }
 ```
+## Why we doing this? Because of server.js we have mentioned it
+<img width="679" height="252" alt="image" src="https://github.com/user-attachments/assets/4193696a-3cd0-465e-8380-2394df980dc3" />
+
 ## Visit your Node.js app `http://<your-server-ip>:3000`
 
+## Before writing new document 
 <img width="888" height="341" alt="image" src="https://github.com/user-attachments/assets/1a565c6e-9571-4a21-96f7-a6464a12ac50" />
 
+## After writing new document 
+<img width="882" height="371" alt="image" src="https://github.com/user-attachments/assets/d1f1a992-f64c-4578-ace8-725e68c2a23e" />
 
 ## With Docker Compose (Recommended)
 
@@ -106,7 +112,6 @@ This will start:
 ```text
 http://<your-server-ip>:8081
 ```
-
 > Example: `http://localhost:8081`
 
 1. Create a database called: **my-db**
@@ -119,7 +124,8 @@ http://<your-server-ip>:8081
   "data": "MongoDB connected successfully Logesh!"
 }
 ```
-
+## Why we doing this? Because of server.js we have mentioned it
+<img width="679" height="252" alt="image" src="https://github.com/user-attachments/assets/4193696a-3cd0-465e-8380-2394df980dc3" />
 ---
 
 ### Step 4: Open the Node.js App UI
@@ -127,7 +133,11 @@ http://<your-server-ip>:8081
 ```text
 http://<your-server-ip>:3000
 ```
+## Before writing new document 
 <img width="888" height="341" alt="image" src="https://github.com/user-attachments/assets/78d1c9b6-f8a1-4118-a257-fab39aef5de6" />
+
+## After writing new document 
+<img width="882" height="371" alt="image" src="https://github.com/user-attachments/assets/4f7d0c32-675e-427a-a43c-dcd462180309" />
 
 > The app will fetch dynamic data from MongoDB and render it in the browser.
 
