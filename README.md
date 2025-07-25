@@ -40,7 +40,38 @@ docker run -itd -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INIT
 ```bash
 docker run -itd -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb --name mongo-express --net mongo-network mongo-express
 ```
+## Step 4: Build and run your Node.js App
+Go to the directory containing your Dockerfile and server.js.
 
+## Build the image:
+
+docker build -t my-node-app .
+
+## Run the container:
+
+docker run -itd \
+  -p 3000:3000 \
+  -e MONGO_DB_USERNAME=admin \
+  -e MONGO_DB_PWD=supersecret \
+  --name node-app \
+  --net mongo-network \
+  my-node-app
+
+## Step 5: Test everything
+## Visit Mongo Express: http://<your-ip>:8081
+
+Create DB: my-db
+
+Create collection: my-collection
+
+Add document:
+
+{
+  "myid": 1,
+  "data": "some dynamic data loaded from db"
+}
+
+## Visit your Node.js app: http://<your-ip>:3000
 ---
 
 ## With Docker Compose (Recommended)
