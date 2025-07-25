@@ -1,42 +1,153 @@
-## demo app - for docker-compose crash course
+# Demo App – Docker Compose Crash Course
 
+A beginner-friendly project to demonstrate running a Node.js app with MongoDB and Mongo Express using **Docker** and **Docker Compose**.
 
-### With Docker
+---
 
-#### To start the application
+## Tech Stack
 
-Step 1: Create docker network
+- Node.js + Express
+- MongoDB
+- Mongo Express (GUI for MongoDB)
+- Docker & Docker Compose
 
-    docker network create mongo-network 
+---
 
-Step 2: start mongodb 
+## With Docker (Manual Method)
 
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo    
+### Step 1: Create Docker Network
 
-Step 3: start mongo-express
-    
-    docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express   
+This step helps both containers communicate using a common bridge network.
 
-_NOTE: creating docker-network in optional. You can start both containers in a default network. In this case, just emit `--net` flag in `docker run` command_
+```bash
+docker network create mongo-network
+````
 
-### With Docker Compose
+> 🔹 **Note:** This step is optional. If you don’t use a custom network, Docker’s default bridge network will still allow basic inter-container communication.
 
-#### To start the application
+---
 
-Step 1: start mongodb and mongo-express
+### Step 2: Start MongoDB Container
 
-    docker-compose -f docker-compose.yaml up
-    
-_You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: open mongo-express from browser
+```bash
+docker run -d \
+  -p 27017:27017 \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=password \
+  --name mongodb \
+  --net mongo-network \
+  mongo
+```
 
-    http://localhost:8081
+---
 
-Step 3: create `my-db` _db_ and `my-collection` _collection_ and _document_ with `{myid: 1, data: "some dynamic data loaded from db"}` in mongo-express
-    
+### Step 3: Start Mongo Express Container
 
-Step 4: Access you nodejs application UI from browser
+```bash
+docker run -d \
+  -p 8081:8081 \
+  -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+  -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+  -e ME_CONFIG_MONGODB_SERVER=mongodb \
+  --name mongo-express \
+  --net mongo-network \
+  mongo-express
+```
 
-    http://localhost:3000
-    
+---
+
+## With Docker Compose (Recommended)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/mloges-h/Docker_nodejs_mangodb_mangoexpress.git
+cd docker-compose-crash-course
+```
+
+### Step 2: Start All Services
+
+```bash
+docker-compose -f docker-compose.yaml up -d
+```
+
+This will start:
+
+* Node.js app on port `3000`
+* MongoDB on port `27017`
+* Mongo Express on port `8081`
+
+---
+
+### Step 3: Open Mongo Express in Your Browser
+
+```text
+http://<your-server-ip>:8081
+```
+
+> Example: `http://localhost:8081`
+
+1. Create a database called: **my-db**
+2. Inside that, create a collection: **my-collection**
+3. Add a document:
+
+```json
+{
+  "myid": 1,
+  "data": "MongoDB connected successfully Logesh!"
+}
+```
+
+---
+
+### Step 4: Open the Node.js App UI
+
+```text
+http://<your-server-ip>:3000
+```
+
+> The app will fetch dynamic data from MongoDB and render it in the browser.
+
+---
+
+## API Endpoints
+
+| Endpoint      | Method | Description                              |
+| ------------- | ------ | ---------------------------------------- |
+| `/`           | GET    | Loads HTML UI                            |
+| `/fetch-data` | GET    | Fetches data from MongoDB (by `myid: 1`) |
+
+---
+
+## Project Structure
+
+```
+.
+├── app/
+│   ├── index.html
+│   ├── server.js
+│   ├── package.json
+├── .env
+├── Dockerfile
+├── docker-compose.yaml
+└── README.md
+```
+
+---
+
+## Key Learning Outcomes
+
+* Use of `docker-compose.yaml` for multi-container orchestration
+* Managing environment variables via `.env` file
+* Accessing MongoDB via browser with Mongo Express
+* Connecting Node.js app to MongoDB using credentials securely
+
+---
+
+## Author
+
+**Logesh M**
+Linux & Cloud Support Engineer | DevOps Learner
+🔗 [GitHub](https://github.com/mloges-h)
+
+---
