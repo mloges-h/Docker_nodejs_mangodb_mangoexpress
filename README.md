@@ -54,19 +54,23 @@ docker build -t my-node-app .
 docker run -itd -p 3000:3000 -e MONGO_DB_USERNAME=admin -e MONGO_DB_PWD=supersecret --name node-app --net mongo-network my-node-app
 ```
 ## Step 5: Test everything
- Visit Mongo Express: http://<your-ip>:8081
 
-Create DB: my-db
+```text
+http://<your-server-ip>:8081
+```
 
-Create collection: my-collection
+> Example: `http://localhost:8081`
 
-New Documents:
+1. Create a database called: **my-db**
+2. Inside that, create a collection: **my-collection**
+3. Add a document:
 
+```json
 {
   "myid": 1,
-  "data": "some dynamic data loaded from db"
+  "data": "MongoDB connected successfully Logesh!"
 }
-
+```
 
 ## Visit your Node.js app: http://<your-ip>:3000
 ---
