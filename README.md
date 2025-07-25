@@ -75,6 +75,9 @@ http://<your-server-ip>:8081
 ```
 ## Visit your Node.js app `http://<your-server-ip>:3000`
 
+<img width="888" height="341" alt="image" src="https://github.com/user-attachments/assets/1a565c6e-9571-4a21-96f7-a6464a12ac50" />
+
+
 ## With Docker Compose (Recommended)
 
 ### Step 1: Clone the Repository
@@ -124,6 +127,7 @@ http://<your-server-ip>:8081
 ```text
 http://<your-server-ip>:3000
 ```
+<img width="888" height="341" alt="image" src="https://github.com/user-attachments/assets/78d1c9b6-f8a1-4118-a257-fab39aef5de6" />
 
 > The app will fetch dynamic data from MongoDB and render it in the browser.
 
