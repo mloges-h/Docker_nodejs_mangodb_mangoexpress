@@ -96,6 +96,7 @@ cd Docker_nodejs_mangodb_mangoexpress
 ### Step 2: Start All Services
 
 ```bash
+docker-compose -f docker-compose.yaml build
 docker-compose -f docker-compose.yaml up -d
 ```
 
