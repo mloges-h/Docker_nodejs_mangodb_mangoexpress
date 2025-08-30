@@ -1,24 +1,28 @@
 node {
     stage('Checkout') {
+        echo "Cloning GitHub repository..."
         git branch: 'main', url: 'https://github.com/mloges-h/Docker_nodejs_mangodb_mangoexpress.git'
     }
 
     stage('Build Docker Images') {
-        sh "docker compose build || docker-compose build"
-    }
-
-    stage('Run Containers') {
-        sh "docker compose up -d || docker-compose up -d"
-    }
-
-    stage('Test Application') {
+        echo "Building Docker images with Docker Compose..."
         sh '''
-        sleep 15
-        curl -f http://localhost:3000 || (echo "App not responding" && exit 1)
+        docker compose build || docker-compose build
         '''
     }
 
-    stage('Cleanup') {
-        sh "docker compose down || docker-compose down"
+    stage('Deploy Containers') {
+        echo "Starting services with Docker Compose..."
+        sh '''
+        docker compose up -d || docker-compose up -d
+        '''
+    }
+
+    stage('Health Check') {
+        echo "Checking if Node.js app is running..."
+        sh '''
+        sleep 15
+        curl -f http://localhost:3000 || (echo "App is not responding on port 3000" && exit 1)
+        '''
     }
 }
