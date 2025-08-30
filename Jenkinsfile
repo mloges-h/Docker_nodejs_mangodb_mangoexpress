@@ -14,7 +14,7 @@ node {
     stage('Deploy Containers') {
         echo "Starting services with Docker Compose..."
         sh '''
-        docker compose up -d || docker-compose up -d
+        docker-compose -f docker-compose.yaml build && docker-compose -f docker-compose.yaml up -d
         '''
     }
 
