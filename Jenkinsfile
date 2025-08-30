@@ -1,36 +1,63 @@
 node {
+    stage('Install Docker & Compose') {
+        echo "Checking and installing Docker & Docker Compose if not present..."
+        sh '''
+        # Install Docker if not installed
+        if ! command -v docker >/dev/null 2>&1; then
+            echo "Installing Docker..."
+            sudo apt-get update -y
+            sudo apt-get install -y docker.io
+            sudo systemctl start docker
+            sudo systemctl enable docker
+            sudo usermod -aG docker jenkins
+        else
+            echo "Docker already installed"
+        fi
+
+        # Install Docker Compose if not installed
+        if ! command -v docker compose >/dev/null 2>&1; then
+            echo "Installing Docker Compose..."
+            sudo apt-get install -y docker-compose
+        else
+            echo "Docker Compose already installed"
+        fi
+
+        docker --version
+        docker compose version || docker-compose --version
+        '''
+    }
+
     stage('Checkout') {
-        // Pull code from your GitHub repo
+        echo "Cloning GitHub repository..."
         git branch: 'main', url: 'https://github.com/mloges-h/Docker_nodejs_mangodb_mangoexpress.git'
     }
 
     stage('Build Docker Images') {
-        echo "Building Docker images for Node.js app, MongoDB, and Mongo Express..."
-        sh """
-        docker compose build
-        """
+        echo "Building Docker images with Docker Compose..."
+        sh '''
+        docker compose build || docker-compose build
+        '''
     }
 
     stage('Run Containers') {
-        echo "Starting services using Docker Compose..."
-        sh """
-        docker compose up -d
-        """
+        echo "Starting services with Docker Compose..."
+        sh '''
+        docker compose up -d || docker-compose up -d
+        '''
     }
 
     stage('Test Application') {
-        echo "Running basic health checks..."
-        // Example: check if Node.js app is running
-        sh """
-        sleep 10
-        curl -f http://localhost:3000 || exit 1
-        """
+        echo "Running health check..."
+        sh '''
+        sleep 15
+        curl -f http://localhost:3000 || (echo "App not responding on port 3000" && exit 1)
+        '''
     }
 
     stage('Cleanup') {
-        echo "Stopping and cleaning up Docker containers..."
-        sh """
-        docker compose down
-        """
+        echo "Stopping and removing containers..."
+        sh '''
+        docker compose down || docker-compose down
+        '''
     }
 }
